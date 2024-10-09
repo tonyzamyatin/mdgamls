@@ -1,0 +1,5 @@
+A world-wide scientific study requests data from different labs to get as comprehensive analyses as possible for a global study. Per county a different number of labs agree to participate and they agree to submit data of concentration levels of the requested parameter. You are the person who must decide if the submitted data can be included to the global study. Consider the first data set to be the data from other countries/continents.What do you gave to consider?		      É can I combine the data to one data set? What are you doing with the data?					É test set: Gaussian distributed?						É test st(s): variance comparable to other data?What is your result?Advise:
+Group 1 - Take "Bsp 1"
+Group 2 - Use "Bsp 2"
+Group 3 -Evaluate "Bsp"
+.....

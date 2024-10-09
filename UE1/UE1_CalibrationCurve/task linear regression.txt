@@ -1,0 +1,8 @@
+Linear regression 
+==================
+
+Inside the "linear regression <group number>.csv" files are datasets of concentrations and corresponding absorption values from a UV/VIS determination of protein concentration. Using this dataset, carry out the following steps to establish a calibration: 
+
+1. determine the linear range of the method
+2. calculate the calibration curve
+3. determine the LOD and LOQ of the calibration
