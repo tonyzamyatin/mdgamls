@@ -1,0 +1,76 @@
+// MDL v1 utf8
+mevislabVersion = 3.4.2
+network  {
+  watchlist = ""
+}
+module LoadAny {
+  internal  {
+    frame = "469 205 104 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "827 204 701 538"
+        sizeHint = "701 538"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = LoadAny
+    name = $(HOME)/PycharmProjects/mdgamls/UE3/Exercise/Dataset_UE3_part3/aneurysm.vti
+    verbose = FALSE
+    analyzeHeader = TRUE
+    allowBioFormats = FALSE
+  }
+}
+module RegionGrowingMacro {
+  internal  {
+    frame = "457 85 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "406 192 1175 576"
+        sizeHint = "1175 576"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = RegionGrowingMacro
+    isInit = TRUE
+    autoUpdateMode = AutoUpdate
+    enableAutoThresholdInterval = TRUE
+    autoThresholdIntervalSizeInPercent = 4.23
+    basicNeighborhoodType = BNBH_3D_6_XYZ
+    extendedNeighborhoodType = ENBH_2D_4_XZ
+    lowerThreshold = 178.2196
+    upperThreshold = 393.7804
+    useExtendedNBH = FALSE
+    stretchOutputOverTime = FALSE
+    cCoord = 0
+    uCoord = 0
+    unitType = UnitTypeGrayValue
+    upperVolumeLimit_ml = 100
+    enableUpperVolumeLimit = FALSE
+    autoUpdateUnitType = TRUE
+    showPartialResults = FALSE
+    posFillValue = -1
+    negFillValue = 0
+    invertResult = FALSE
+    showOuterBoundariesOnly = FALSE
+    incrementalUpdateMode = Smart
+    internalAccuracy = Auto
+    markerPersistence = TRUE
+    markerString = "[(-87.7227 -267.16 -357) #25]"
+    deleteMarkerOnClick = TRUE
+    markerOverflowMode = None
+    maxMarkers = 0
+    baseColor = "1 0.420675009489059 0"
+    blendMode = BLEND_BLEND
+    overlayAlpha = 0.5
+  }
+}
+connections  {
+  RegionGrowingMacro.inImage = LoadAny.outImage
+}
+networkModel = ""
