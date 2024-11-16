@@ -133,7 +133,7 @@ def refresh_images():
 
 # UI --- no need to touch this part (unless you want to make UI changes)
 app = tk.Tk()
-app.title("DICOM Viewer")
+app.title("DICOM Viewer (noise suppression)")
 
 frame = ttk.Frame(app)
 frame.pack(expand=True, fill='both')
