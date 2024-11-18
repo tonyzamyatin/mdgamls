@@ -1,0 +1,7 @@
+{
+    "cmap": "plasma",
+    "opacity": "sigmoid",
+    "shade": false,
+    "blending": "maximum",
+    "name": "Config 2"
+}
