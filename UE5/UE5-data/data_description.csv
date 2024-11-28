@@ -5,7 +5,7 @@ last.status,string,,"{'deceased': 194, 'discharged': 1285}",For the selected vis
 age.splits,string,,"{'(59,74]': 376, '(74,90]': 297, '[18,59]': 806}",Age intervals (in years) at time of admission; truncated for patients over 90 years of age
 gender_concept_name,string,,"{'FEMALE': 635, 'MALE': 810}",Documented gender in the EHR (Electronic Health Record); gender is dropped in select cases for de-identification purposes
 visit_start_datetime,string,,,Date shifted start of selected visit
-visit_concept_name,string,,"{'Emergency Room Visit': 376, 'Inpatient Visit': 1100, 'Outpatient Visit': 3}",For the selected visit the type of the visit; note patients can be admitted for observation (multiple days) in emergency department
+visit_concept_name,string,2345-7_Glucose,"{'Emergency Room Visit': 376, 'Inpatient Visit': 1100, 'Outpatient Visit': 3}",For the selected visit the type of the visit; note patients can be admitted for observation (multiple days) in emergency department
 is_icu,string,,"{False: 1201, True: 278}",Patient admitted to the ICU based on documented room charges
 was_ventilated,string,,"{'No': 1254, 'Yes': 225}",The patient had invasive ventilation
 invasive_vent_days,numeric,,,Number of documented days of invasive ventilation support
