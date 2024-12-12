@@ -20,7 +20,7 @@ def filter_data(df, year, state):
     return grouped_df
 
 def plot_trend(df, state, year):
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(10, 6))
     plt.plot(df['New Month'], df['COVID-19 Deaths'], label='COVID-19 Deaths', marker='o')
     plt.plot(df['New Month'], df['Influenza Deaths'], label='Influenza Deaths', marker='x')
     plt.plot(df['New Month'], df['Pneumonia Deaths'], label='Pneumonia Deaths', marker='s')
