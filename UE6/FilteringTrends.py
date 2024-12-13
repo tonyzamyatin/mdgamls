@@ -15,8 +15,8 @@ def filter_data(df, year, state):
         'COVID-19 Deaths': 'sum',
         'Pneumonia Deaths': 'sum',
         'Influenza Deaths': 'sum',
-        'Pneumonia and COVID-19 Deaths': 'sum',
-        'Pneumonia, Influenza, or COVID-19 Deaths': 'sum'
+        'Pneumonia and COVID-19 Deaths': 'sum', # i dont think we need this only sum of pneumonia and cov death?
+        'Pneumonia, Influenza, or COVID-19 Deaths': 'sum' # i dont think we need this only sum
     }).reset_index()
 
     return grouped_df
