@@ -48,7 +48,6 @@ st.sidebar.markdown(
     The forecast is computed using the ARIMA model with a 95% confidence interval and is based on the last known data point and extends into the 
     future.
     
-    For more details please refer to the technical documentation.
     
     # DISCLAIMER
     1. Death counts shown here may differ from other published sources, as data currently are lagged by an average of 1–2 weeks.
