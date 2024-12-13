@@ -30,7 +30,7 @@ with col1_layout:
 
 with col2_layout:
     st.header("Compare statistics")
-    st.markdown("Compare number of deaths from pathogens of max 5 states at the same point in time.")
+    st.markdown("Compare number of deaths from pathogens of max 5 states at the same point in time. For each state additionally the percentage of deaths by the pathogen in relation to the total number of deaths of defined time in the state is given.")
     col1_compare, col2_compare, col3_compare = st.columns([3,1,1])
     with col1_compare:
         states_compare = st.multiselect("Select States to Compare", options=options_state, placeholder="Choose up to 5 states", max_selections=5)
