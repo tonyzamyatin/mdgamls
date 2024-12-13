@@ -62,18 +62,20 @@ def get_cleaned_and_sorted_data() -> pd.DataFrame:
         'Pneumonia Deaths': 'Pneumonia',
         'Pneumonia and COVID-19 Deaths': 'Pneumonia & COVID-19',
         'Influenza Deaths': 'Influenza',
-        'Pneumonia, Influenza, or COVID-19 Deaths': 'Undiagnosed',
+        'Pneumonia, Influenza, or COVID-19 Deaths': 'Pneumonia, Influenza, or COVID-19',
     }
 
     raw_df.rename(columns=columns_rename_map, inplace=True)
     # Columns to drop if they contain any NaN values
     filter_cols = ['Start Date', 'End Date', 'MMWR Week', 'State']
     # Columns to fill with 0 if they contain NaN values
-    data_cols = ['COVID-19', 'Total', 'Pneumonia', 'Pneumonia & COVID-19', 'Influenza', 'Undiagnosed']
+    data_cols = ['COVID-19', 'Total', 'Pneumonia', 'Pneumonia & COVID-19', 'Influenza']
     df = clean_data(raw_df, cols_drop_nan=filter_cols, cols_fill_nan=data_cols)
     df.sort_values(by='End Date', inplace=True)
 
     return df
+
+
 
 
 
