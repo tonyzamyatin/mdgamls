@@ -1,6 +1,5 @@
 import pandas as pd
 import pmdarima as pm
-import plotly.graph_objects as go
 from matplotlib import ticker as mtick, pyplot as plt
 from statsmodels.tsa.arima.model import ARIMA, ARIMAResults
 from statsmodels.tsa.seasonal import DecomposeResult, seasonal_decompose
@@ -34,7 +33,7 @@ def create_multi_time_series(df: pd.DataFrame, metrics=list[str], state: str = '
     return multi_time_series
 
 
-def plot_trend(multi_ts: pd.DataFrame, state: str = 'United States'):
+def plot_trends(multi_ts: pd.DataFrame, state: str = 'United States'):
     """
     Analyze trends for a specific state. If not state is specified the national data is analyzed.
     Conditionally scales the y-axis to thousands if values are large.
@@ -136,10 +135,11 @@ def fit_sarima(ts: pd.DataFrame, order=tuple[int, int, int, int]) -> ARIMAResult
     return result
 
 
-def plot_forecast_with_confidence_intervals(
+def plot_forecast_with_ci(
         ts: pd.Series,
         forecast: pd.Series,
         conf_int: pd.DataFrame,
+        alpha: float,
         title: str,
         ylabel: str = "Values",
         xlabel: str = "Date",
@@ -152,6 +152,7 @@ def plot_forecast_with_confidence_intervals(
     :param forecast: Forecasted values (pandas Series).
     :param conf_int: Confidence intervals (DataFrame with 'Lower CI' and 'Upper CI').
     :param title: Title of the plot.
+    :param alpha: Significance level of the computed confidence intervals.
     :param ylabel: Y-axis label.
     :param xlabel: X-axis label.
     :param ylim: Y-axis limits (optional).
@@ -165,7 +166,7 @@ def plot_forecast_with_confidence_intervals(
         conf_int.iloc[:, 1],
         color="orange",
         alpha=0.3,
-        label="Confidence Interval"
+        label=f"Confidence Interval (α={alpha})"
     )
     plt.title(title)
     plt.xlabel(xlabel)
@@ -234,75 +235,3 @@ def analyze_residuals(model: ARIMAResults) -> None:
         print("Residuals are not normally distributed.")
 
 
-def plot_forecast_with_confidence_intervals_interactive(
-        ts: pd.Series,
-        forecast: pd.Series,
-        conf_int: pd.DataFrame,
-        title: str,
-        ylabel: str = "Values",
-        xlabel: str = "Date",
-        ylim: tuple = None
-):
-    """
-    Plot time series with forecast and confidence intervals using Plotly.
-
-    :param ts: Actual time series data (pandas Series).
-    :param forecast: Forecasted values (pandas Series).
-    :param conf_int: Confidence intervals (DataFrame with 'Lower CI' and 'Upper CI').
-    :param title: Title of the plot.
-    :param ylabel: Y-axis label.
-    :param xlabel: X-axis label.
-    :param ylim: Y-axis limits (optional).
-    """
-    # Create the figure
-    fig = go.Figure()
-
-    # Add actual data
-    fig.add_trace(
-        go.Scatter(
-            x=ts.index,
-            y=ts.values,
-            mode="lines",
-            name="Actual Data",
-            line=dict(color="blue"),
-        )
-    )
-
-    # Add forecast data
-    fig.add_trace(
-        go.Scatter(
-            x=forecast.index,
-            y=forecast.values,
-            mode="lines",
-            name="Forecast",
-            line=dict(color="orange", dash="dash"),
-        )
-    )
-
-    # Add confidence intervals as an envelope
-    fig.add_trace(
-        go.Scatter(
-            x=forecast.index.tolist() + forecast.index[::-1].tolist(),
-            y=conf_int["Upper CI"].tolist() + conf_int["Lower CI"][::-1].tolist(),
-            fill="toself",
-            fillcolor="rgba(255, 165, 0, 0.2)",  # Semi-transparent orange
-            line=dict(width=0),
-            name="Confidence Interval",
-            hoverinfo="skip",
-        )
-    )
-
-    # Update layout
-    fig.update_layout(
-        title=title,
-        xaxis_title=xlabel,
-        yaxis_title=ylabel,
-        height=600,
-        xaxis_rangeslider_visible=True,
-    )
-
-    # Set y-axis limits if specified
-    if ylim is not None:
-        fig.update_yaxes(range=ylim)
-
-    return fig

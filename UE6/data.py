@@ -11,8 +11,8 @@ def get_raw_data() -> pd.DataFrame:
 
 def clean_data(df: pd.DataFrame, cols_drop_nan: list[str] = None, cols_fill_nan: list[str] = None) -> pd.DataFrame:
     """
-    Clean the data by dropping rows with NaN values in specific columns and filling
-    NaN values in other columns with 0. The original DataFrame is not modified.
+    Clean the data by dropping rows with NaN values and forward filling
+    NaN values as specified. The original DataFrame is not modified.
     :param df:  DataFrame to clean
     :param cols_drop_nan:  Columns to drop the rows for if they contain any NaN values (optional)
     :param cols_fill_nan:  Columns to fill with last known value if they contain NaN values (optional)
@@ -52,6 +52,28 @@ def filter_data_by_state(df: pd.DataFrame, state: str) -> pd.DataFrame:
         raise ValueError(f"State '{state}' not found in the data!")
         # Filter for the specified state
     return df[df['State'] == state]
+
+
+def get_cleaned_and_sorted_data() -> pd.DataFrame:
+    raw_df = get_raw_data()
+    columns_rename_map = {
+        'COVID-19 Deaths': 'COVID-19',
+        'Total Deaths': 'Total',
+        'Pneumonia Deaths': 'Pneumonia',
+        'Pneumonia and COVID-19 Deaths': 'Pneumonia & COVID-19',
+        'Influenza Deaths': 'Influenza',
+        'Pneumonia, Influenza, or COVID-19 Deaths': 'Undiagnosed',
+    }
+
+    raw_df.rename(columns=columns_rename_map, inplace=True)
+    # Columns to drop if they contain any NaN values
+    filter_cols = ['Start Date', 'End Date', 'MMWR Week', 'State']
+    # Columns to fill with 0 if they contain NaN values
+    data_cols = ['COVID-19', 'Total', 'Pneumonia', 'Pneumonia & COVID-19', 'Influenza', 'Undiagnosed']
+    df = clean_data(raw_df, cols_drop_nan=filter_cols, cols_fill_nan=data_cols)
+    df.sort_values(by='End Date', inplace=True)
+
+    return df
 
 
 
