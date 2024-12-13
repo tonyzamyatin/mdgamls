@@ -31,7 +31,7 @@ Pmdarima for time series analysis. The version control was managed in Github. St
 To tackle the identified challenges of the users and defined tasks four interactive visual analytics features have been implemented: 
 1. Comparing Weekly Death Trends across Years
 2. Following Weekly Death Trends by State
-3. Comparing Weekly Death Trends across States
+3. Comparing Relative Death Counts across States
 4. Predicting for a Cause of Death
 
 ### Comparing Weekly Death Trends across Years
@@ -53,7 +53,7 @@ For this feature there are two filtering options as well:
 This selection also determines the state for the "Predicting for a Cause of Death" feature below.
 2. Time Interval Filtering: Beneath the graph, a slider element allows users to refine the displayed time interval
 
-### Comparing Weekly Death Trends across States
+### Comparing Relative Death Counts across States
 This feature, located in the bottom-left section, allows users to analyze pathogen-related deaths across states. 
 Upon selecting a state from the dropdown menu, a bar plot is displayed. The x-axis represents selected states, while the y-axis shows 
 the percentage of pathogen-related deaths relative to all deaths in each state for a specified time period.

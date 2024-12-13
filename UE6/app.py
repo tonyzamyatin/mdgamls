@@ -48,6 +48,7 @@ st.sidebar.markdown(
     The forecast is computed using the ARIMA model with a 95% confidence interval and is based on the last known data point and extends into the 
     future.
     
+    For more details please refer to the technical documentation.
     
     # DISCLAIMER
     1. Death counts shown here may differ from other published sources, as data currently are lagged by an average of 1–2 weeks.
@@ -78,7 +79,7 @@ col1, col2 = st.columns([1, 1], gap="large")
 # LEFT COLUMN
 with col1:
     # Section 1: Line chart
-    st.header("Weekly Death Trends by Year")
+    st.header("Weekly Death Trends across Years")
     # Create two columns for the side-by-side layout
     col_state, col_metric = st.columns(2)
     # Add the selectbox widgets in each column
@@ -90,7 +91,7 @@ with col1:
     st.plotly_chart(line_chart_fig, use_container_width=True)
 
     # Section 2: Relative death counts
-    st.header("Relative Death Counts by Metric")
+    st.header("Relative Death Counts across States")
     col_year, col_month = st.columns(2)
     # Add the selectbox widgets in each column
     with col_year:
